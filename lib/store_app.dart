@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 class StoreApp extends StatelessWidget {
@@ -8,8 +6,9 @@ class StoreApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Flutter Demo',
-    home: Scaffold(),
+    return MaterialApp(
+      title: 'storeapp',
+      home: Scaffold(appBar: AppBar(title: Text('storeapp'))),
     );
   }
 }
