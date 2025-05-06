@@ -16,7 +16,8 @@ class EnvVariables {
         await dotenv.load(fileName: '.env.prod');
         break;
     }
-    _envType = dotenv.get( 'ENV_TYPE');
+    _envType = dotenv.get('ENV_TYPE');
   }
+
   String get envType => _envType;
 }
