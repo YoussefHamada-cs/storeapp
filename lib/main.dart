@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:storeapp/core/env_variables.dart';
 
-void main() {
+void main() async{
+await EnvVariables.instance.init(EnvType.dev);
   runApp(const MyApp());
 }
 
