@@ -14,7 +14,7 @@ class StoreApp extends StatelessWidget {
         if (value) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            title: 'storeapp',
+            title: 'Store',
             builder: (context, child) {
               return Scaffold(
                 body: Builder(
