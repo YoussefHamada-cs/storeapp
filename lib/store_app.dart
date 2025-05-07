@@ -10,7 +10,7 @@ class StoreApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: ConnectivityController.instance.isOnline,
+      valueListenable: ConnectivityController.instance.isConnected,
       builder: (context, value, child) {
         if (value) {
           return ScreenUtilInit(

@@ -2,28 +2,32 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 
 class ConnectivityController {
-   ConnectivityController._();
-   static final ConnectivityController instance = ConnectivityController._();
-   ValueNotifier<bool> isOnline = ValueNotifier(true);
-   Future<void> init() async {
-    final  connectivityResult = await Connectivity().checkConnectivity();
-isCheckConnection(connectivityResult as ConnectivityResult? );
-Connectivity().onConnectivityChanged.listen(isCheckConnection as void Function(List<ConnectivityResult> event)?);
-   }
-bool isCheckConnection(ConnectivityResult? connectivityResult) {
-    final connectivityResult = Connectivity().checkConnectivity();
-    if (connectivityResult == ConnectivityResult.none) {
-      isOnline.value = false;
-      // No internet connection
+  /// Private constructor
+  ConnectivityController._();
+
+  /// Static instance
+  static final ConnectivityController instance = ConnectivityController._();
+
+  /// Notifier for connection status
+  ValueNotifier<bool> isConnected = ValueNotifier(true);
+
+  /// Initialize connectivity monitoring
+  Future<void> init() async {
+    final result = await Connectivity().checkConnectivity();
+    isInternetConnected(result.first);
+    Connectivity().onConnectivityChanged.listen((results) => isInternetConnected(results.first));
+  }
+
+  /// Handle connectivity changes
+  bool isInternetConnected(ConnectivityResult? result) {
+    if (result == ConnectivityResult.none) {
+      isConnected.value = false;
       return false;
-    }else if(connectivityResult == ConnectivityResult.mobile || connectivityResult == ConnectivityResult.wifi){
-      isOnline.value = true;
+    } else if (result == ConnectivityResult.mobile ||
+        result == ConnectivityResult.wifi) {
+      isConnected.value = true;
       return true;
     }
-    
-     else {
-      // Internet connection available
-      return false;
-    } 
-   }
+    return false;
+  }
 }
