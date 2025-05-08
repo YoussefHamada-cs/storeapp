@@ -30,12 +30,16 @@ class StoreApp extends StatelessWidget {
               localeResolutionCallback:
                   AppLocalizationsSetup.localeResolutionCallback,
               builder: (context, child) {
-                return Scaffold(
-                  body: Builder(
-                    builder: (context) {
-                      ConnectivityController.instance.init();
-                      return child!;
-                    },
+                return GestureDetector(
+                  onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+                  
+                  child: Scaffold(
+                    body: Builder(
+                      builder: (context) {
+                        ConnectivityController.instance.init();
+                        return child!;
+                      },
+                    ),
                   ),
                 );
               },
