@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:storeapp/core/app/connactivity_controller.dart';
+import 'package:storeapp/core/app_router/app_router.dart';
 import 'package:storeapp/core/views/no_network_view.dart';
 
 class StoreApp extends StatelessWidget {
@@ -16,9 +17,10 @@ class StoreApp extends StatelessWidget {
           return ScreenUtilInit(
             designSize: const Size(375, 812),
             minTextAdapt: true,
-            child: MaterialApp(
+            child: MaterialApp.router(
               debugShowCheckedModeBanner: false,
-              title: 'Store',
+              routerConfig: AppRouter().router,
+              
               builder: (context, child) {
                 return Scaffold(
                   body: Builder(
@@ -29,7 +31,7 @@ class StoreApp extends StatelessWidget {
                   ),
                 );
               },
-              home: Scaffold(appBar: AppBar(title: Text('storeapp'))),
+              
             ),
           );
         } else {
