@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:storeapp/core/app/connactivity_controller.dart';
 import 'package:storeapp/core/app_router/app_router.dart';
+import 'package:storeapp/core/languages/app_localizations_setup.dart';
 import 'package:storeapp/core/theme/app_theme.dart';
 import 'package:storeapp/core/views/no_network_view.dart';
 
@@ -22,6 +23,12 @@ class StoreApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               routerConfig: AppRouter().router,
               theme: themeDark(),
+              locale: Locale('ar'),
+              supportedLocales: AppLocalizationsSetup.supportedLocales,
+              localizationsDelegates:
+                  AppLocalizationsSetup.localizationsDelegates,
+              localeResolutionCallback:
+                  AppLocalizationsSetup.localeResolutionCallback,
               builder: (context, child) {
                 return Scaffold(
                   body: Builder(
