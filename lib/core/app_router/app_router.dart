@@ -3,13 +3,29 @@ import 'package:go_router/go_router.dart';
 import 'package:storeapp/core/app_router/app_routes.dart';
 import 'package:storeapp/core/app_router/base_roures.dart';
 import 'package:storeapp/core/app_router/mainPages/main_pages.dart';
-import 'package:storeapp/features/details.dart';
-import 'package:storeapp/features/ome.dart';
+
+import 'package:storeapp/features/auth/presentation/views/login_view.dart';
+import 'package:storeapp/features/auth/presentation/views/sign_up_view.dart';
 
 class AppRouter {
+ 
   final GoRouter router = GoRouter(
-    initialLocation: AppPaths.home,
+    initialLocation: AppPaths.login,
+
     routes: [
+      // ==================== Auth Routes ====================
+      GoRoute(
+        path: AppPaths.login,
+        name: AppRoutes.login,
+        pageBuilder:
+            (context, state) => buildTransitions(context, state, const LoginView()),
+      ),
+      GoRoute(
+        path: AppPaths.signUp,
+        name: AppRoutes.signUp,
+        pageBuilder:
+            (context, state) => buildTransitions(context, state, const SignUpView()),
+      ),
       // ==================== Main Shell Route (Bottom Navigation) ====================
       ShellRoute(
         builder: (context, state, child) {
@@ -22,7 +38,7 @@ class AppRouter {
             name: AppRoutes.home,
             pageBuilder:
                 (context, state) =>
-                    buildTransitions(context, state, HomeView()),
+                    buildTransitions(context, state, Scaffold()),
           ),
 
           // ==================== Detail Route with Custom Transition ====================
@@ -30,7 +46,7 @@ class AppRouter {
             path: AppPaths.detail,
             name: AppRoutes.detail,
             pageBuilder:
-                (context, state) => buildTransitions(context, state, Details()),
+                (context, state) => buildTransitions(context, state, Scaffold()),
           ),
 
           // ==================== Search Tab Route ====================

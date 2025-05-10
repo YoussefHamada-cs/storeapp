@@ -1,5 +1,7 @@
 class AppRoutes {
- 
+ // auth
+ static const String login = '/login';
+  static const String signUp = '/sign-up';
 
   // Home
   static const String home = '/home';
@@ -19,7 +21,9 @@ class AppRoutes {
 }
 
 class AppPaths {
-  
+  // auth
+ static const String login = '/login';
+ static const String signUp = '/sign-up';
 
   // Home
   static const String home = '/home';

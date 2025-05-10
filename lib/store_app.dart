@@ -23,7 +23,7 @@ class StoreApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               routerConfig: AppRouter().router,
               theme: themeDark(),
-              locale: Locale('ar'),
+              locale: Locale('en'),
               supportedLocales: AppLocalizationsSetup.supportedLocales,
               localizationsDelegates:
                   AppLocalizationsSetup.localizationsDelegates,
@@ -32,7 +32,7 @@ class StoreApp extends StatelessWidget {
               builder: (context, child) {
                 return GestureDetector(
                   onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-                  
+
                   child: Scaffold(
                     body: Builder(
                       builder: (context) {
