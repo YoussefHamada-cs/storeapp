@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:storeapp/core/common/widgets/text_app.dart';
 import 'package:storeapp/core/extension/context_extension.dart';
-import 'package:storeapp/core/languages/lang_keys.dart';
 
-class GoToSignUp extends StatelessWidget {
-  const GoToSignUp({super.key});
+class CustomButtonGoTo extends StatelessWidget {
+  const CustomButtonGoTo({super.key, required this.onPressed, required this.text});
+ final  void Function() onPressed;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {},
+      onPressed: onPressed,
       child: TextApp(
-        text: context.translate(LangKeys.createAccount),
+        text: text,
         theme: context.textStyle.copyWith(
           fontSize: 16.sp,
           fontWeight: FontWeight.bold,

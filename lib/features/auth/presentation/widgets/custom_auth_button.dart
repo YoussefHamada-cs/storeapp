@@ -4,11 +4,15 @@ import 'package:storeapp/core/common/animations/animate_do.dart';
 import 'package:storeapp/core/common/widgets/custom_linear_button.dart';
 import 'package:storeapp/core/common/widgets/text_app.dart';
 import 'package:storeapp/core/extension/context_extension.dart';
-import 'package:storeapp/core/languages/lang_keys.dart';
 
-class LoginButton extends StatelessWidget {
-  const LoginButton({super.key});
-
+class CustomAuthButton extends StatelessWidget {
+  const CustomAuthButton({
+    super.key,
+    required this.onPressed,
+    required this.text,
+  });
+  final void Function() onPressed;
+  final String text;
   @override
   Widget build(BuildContext context) {
     return CustomFadeInRight(
@@ -16,9 +20,9 @@ class LoginButton extends StatelessWidget {
       child: CustomLinearButton(
         width: MediaQuery.of(context).size.width,
         height: 50.h,
-        onPressed: () {},
+        onPressed: onPressed,
         child: TextApp(
-          text: context.translate(LangKeys.login),
+          text: text,
           theme: context.textStyle.copyWith(
             fontSize: 18.sp,
             fontWeight: FontWeight.bold,
