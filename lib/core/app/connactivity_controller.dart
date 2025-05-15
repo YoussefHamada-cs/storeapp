@@ -14,8 +14,8 @@ class ConnectivityController {
   /// Initialize connectivity monitoring
   Future<void> init() async {
     final result = await Connectivity().checkConnectivity();
-    isInternetConnected(result.first);
-    Connectivity().onConnectivityChanged.listen((results) => isInternetConnected(results.first));
+    isInternetConnected(result);
+    Connectivity().onConnectivityChanged.listen(isInternetConnected);
   }
 
   /// Handle connectivity changes

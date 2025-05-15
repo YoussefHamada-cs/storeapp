@@ -22,14 +22,14 @@ class LoginBody extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
         child: Column(
           children: [
-            ThemeAndLangButtons(),
+            const ThemeAndLangButtons(),
             SizedBox(height: 50.h),
             AuthTitleInfo(
               title: context.translate(LangKeys.login),
               description: context.translate(LangKeys.welcome),
             ),
             SizedBox(height: 30.h),
-            LoginTextFrom(),
+            const LoginTextFrom(),
             SizedBox(height: 30.h),
             CustomAuthButton (onPressed: () {  }, text: context.translate(LangKeys.login),),
             SizedBox(height: 30.h),

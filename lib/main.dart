@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:storeapp/core/app/env_variables.dart';
+import 'package:storeapp/core/di/injection_container.dart';
 import 'package:storeapp/firebase_options.dart';
 import 'package:storeapp/store_app.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -13,7 +14,8 @@ void main() async {
   await EnvVariables.instance.init(EnvType.dev);
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   Bloc.observer = AppBlocObserver();
-   await SharedPref().instantiatePreferences();
+  await SharedPref().instantiatePreferences();
+  await setupInjector();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
